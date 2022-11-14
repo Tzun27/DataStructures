@@ -8,6 +8,21 @@
 char stack[MAX];
 int top = -1;
 
+char* revstr(char *str1)  
+{  
+    int i, len, temp;  
+    len = strlen(str1);
+      
+    for (i = 0; i < len/2; i++)  
+    {  
+        temp = str1[i];  
+        str1[i] = str1[len - i - 1];  
+        str1[len - i - 1] = temp;  
+    }  
+
+    return str1;
+}  
+
 void push(char c)
 {
     if (top >= (MAX - 1))
@@ -81,7 +96,7 @@ char* postfixToPrefixConvert(char postfix[])
 
     c[j] = '\0';
 
-    return strrev(c);
+    return revstr(c);
     
 }
 
